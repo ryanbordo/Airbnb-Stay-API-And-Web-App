@@ -19728,11 +19728,9 @@ JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch res
 JavaScript error: https://ced-ns.sascdn.com/diff/templates/ts/dist/banner/sas-banner-1.3.js, line 1: SyntaxError: Document.querySelector: '#google_ads_iframe_/110861820/comparecities_btf_1_hb_iframe' is not a valid selector
 JavaScript warning: https://pagead2.googlesyndication.com/bg/jdpdYrpkibv-F-ZvbPHZN82lghlqt1OiHBdTY59cac0.js line 2 > eval line 3566 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
 JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
-0.js, line 25: unreachable code after return statement
-1687403547291	Marionette	INFO	Stopped listening on port 5594168Dynamically enable window occlusion 1
-ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "56814" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\ryanc\\AppData\\Local\\Temp\\rust_mozprofileQEJjQ0"
-*** You are running in headless mode.
-console.warn: services.settings: Ignoring preference override of remote settings server
+JavaScript error: https://ced-ns.sascdn.com/diff/templates/ts/dist/banner/sas-banner-1.3.js, line 1: SyntaxError: Document.querySelector: '#google_ads_iframe_/110861820/comparecities_atf_0_hb_iframe' is not a valid selector
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jdpdYrpkibv-F-ZvbPHZN82lghlqt1OiHBdTY59cac0.js line 2 > eval line 7457 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+ override of remote settings server
 console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
 1687403547832	Marionette	INFO	Marionette enabled
 Dynamically enable window occlusion 0
@@ -19918,3 +19916,50 @@ JavaScript warning: , line 0: WebGL warning: texSubImage: Tex image TEXTURE_2D l
 JavaScript warning: , line 0: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
 1687404020767	Marionette	INFO	Stopped listening on port 57212
 Dynamically enable window occlusion 1
+1687537452334	geckodriver	INFO	Listening on 127.0.0.1:50126
+1687537455387	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50127" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\ryanc\\AppData\\Local\\Temp\\rust_mozprofileQnV1D9"
+1687537489818	geckodriver	INFO	Listening on 127.0.0.1:50193
+1687537492869	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50194" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\ryanc\\AppData\\Local\\Temp\\rust_mozprofileUzY7rB"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1687537493233	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1687537493241	Marionette	INFO	Listening on port 50203
+Read port: 50203
+WebDriver BiDi listening on ws://127.0.0.1:50194
+1687537493410	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:50194/devtools/browser/0ad808c9-8154-471b-8415-5d73bede1ce0
+JavaScript warning: https://a0.muscache.com/airbnb/static/packages/web/common/frontend/hyperloop-browser/core.e3d109c37c.js, line 34: unreachable code after return statement
+JavaScript warning: https://a0.muscache.com/airbnb/static/packages/web/common/db17.bfa74ac718.js, line 25: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://app.rentcast.io."
+JavaScript warning: https://maps.googleapis.com/maps-api-v3/api/js/53/8/webgl.js, line 107: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Texture has not been initialized prior to a partial upload, forcing the browser to clear it. This may be slow.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Texture has not been initialized prior to a partial upload, forcing the browser to clear it. This may be slow.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Texture has not been initialized prior to a partial upload, forcing the browser to clear it. This may be slow.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+JavaScript warning: https://a0.muscache.com/airbnb/static/packages/web/common/frontend/hyperloop-browser/core.e3d109c37c.js, line 34: unreachable code after return statement
+JavaScript warning: https://a0.muscache.com/airbnb/static/packages/web/common/92e6.65b7dad8a2.js, line 47: Script terminated by timeout at:
+I.port1.onmessage@https://a0.muscache.com/airbnb/static/packages/web/common/92e6.65b7dad8a2.js:47:1478
+
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require 44157a
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require 20303e
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require 621642
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require 66a8e8
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require 186500
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require fa03b8
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require 739703
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require 22d0b9
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require f62c95
+JavaScript error: https://a0.muscache.com/airbnb/static/packages/web/en/frontend/airmetro/src/asyncRequire.c92ed9e9b8.js, line 2: Error: Failed to async require a45f9d
+JavaScript warning: https://maps.googleapis.com/maps-api-v3/api/js/53/8/webgl.js, line 107: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Texture has not been initialized prior to a partial upload, forcing the browser to clear it. This may be slow.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Texture has not been initialized prior to a partial upload, forcing the browser to clear it. This may be slow.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Texture has not been initialized prior to a partial upload, forcing the browser to clear it. This may be slow.
+JavaScript warning: , line 0: WebGL warning: texSubImage: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1687538164662	Marionette	INFO	Stopped listening on port 50203
+Dynamically enable window occlusion 1
+console.error: (new Error("Data is not ready.", "resource://gre/modules/JSONFile.sys.mjs", 184))
