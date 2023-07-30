@@ -1,0 +1,148 @@
+html{
+    font-family: sans-serif;
+}
+
+.main{
+    color: white;
+}
+
+.main picture{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    font-size: 14px;
+    height: 40px;
+    border-radius: 20px;
+    border: solid 2px black;
+    margin-right: 5px;
+}
+
+button{
+    background-color: #00A699;
+    border: solid 2px black;
+    color: white;
+    font-size: 14px;
+    height: 46px;
+    border-radius: 20px;
+}
+
+button:hover{
+    background-color: #028075;
+    cursor: pointer;
+}
+
+.hidden{
+    display: none;
+}
+
+div, .airbnb-pic{
+    border-radius: 20px;
+}
+
+.searches, .main{
+    background-color: #FF5A5F !important;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.airbnb{
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    color: black;
+    background-color: white;
+    text-align: center;
+    padding-top: 10px;
+    margin: 10px;
+    max-width: inherit;
+    max-height: inherit;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: 0% !important;
+}
+
+.underline{
+    border-top: solid 1px black;
+}
+
+.left{
+    justify-content: center;
+}
+
+.url-form{
+    display: flex;
+    flex-direction: column;
+}
+
+p{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.left picture img{
+    max-width: 90%;
+    max-height: fit-content;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+
+h5, a{
+    padding: 5px;
+    font-size: 20px !important;
+    margin: 5px auto 5px auto;
+    font-weight: normal;
+    text-align: center;
+}
+
+.left, .right{
+    display: flex;
+    flex-direction: column;
+    text-align: left !important;
+    justify-content: space-evenly;
+}
+
+@media screen and (min-width: 900px) {
+
+    form{
+        display: flex;
+        flex-direction: row !important;
+    }
+
+    input{
+        width: 90%;
+        height: 40px;
+        color: #767676;
+    }
+
+    button{
+        width: 10%;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .info{
+        flex-direction: row !important;
+    }
+
+    .left{
+        max-width: 70%;
+        max-height: fit-content;
+    }
+
+}

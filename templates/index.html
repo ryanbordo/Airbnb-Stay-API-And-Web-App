@@ -6,15 +6,22 @@
     <title>Home</title>
 </head>
 <body>
-    <div>
-        <h1>Welcome</h1>
-        <h3>Enter your Airbnb link below</h3>
+    <div class = "main">
+        <h1>Welcome,</h1>
+        <h3>Enter a US Airbnb link below to see hidden information about your stay</h3>
         <form class="url-form">
-            <input type="text" placeholder="https://www.airbnb.com/..." name="url-input">
+            <input type="text" placeholder="Enter your Airbnb link" name="url-input">
             <button>Submit</button>
         </form>
-    
-        <script src="index.js"></script>
+        <picture>
+            <img src = "/images/loading.gif" class = "loading hidden">
+        </picture>
     </div>
+    <div class = "searches">
+    </div>
+
+    <script src = "/scripts/index.js"></script>
+    <script src = "/scripts/jquery-3.6.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/site.css" media="all">
 </body>
 </html>

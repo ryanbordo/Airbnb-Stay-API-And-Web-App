@@ -36,9 +36,12 @@ def airbnb():
     try:
         listing_url = request.args.get("url")
     except:
-        return {'Error' : 'URL argument not provided'},200
+        return {'Error' : 'URL argument not provided'}
     listing_url = urllib.parse.unquote(listing_url)
-    driver.get(listing_url)
+    try:
+        driver.get(listing_url)
+    except:
+        return {'Error' : 'URL argument provided is not valid'}
     time.sleep(5)
     try:
         airbnb_name = driver.find_element("class name","hpipapi").get_attribute("innerHTML")
@@ -46,16 +49,23 @@ def airbnb():
         info = driver.find_element("class name","lgx66tx").text.split("·")
         title = get_numbers(driver.find_element("class name", "hpipapi").text)
     except:
-        return {'Error' : 'Unable to read Airbnb webpage'}, 200
-    price = None
-    map_link, scroll_down_height = None, 0
+        return {'Error' : 'Unable to read Airbnb webpage'}
+    map_link, price, scroll_down_height = None, 0, 0
     while not map_link:
         try:
             map_link = driver.find_element("xpath","/html/body/div[5]/div/div/div[1]/div/div[2]/div/div/div/div[1]/main/div/div[1]/div[5]/div/div/div/div[2]/section/div[3]/div[4]/div[2]/div/div/div[16]/div/div[5]/div[2]/a").get_attribute("href")
-            price = get_numbers(driver.find_elements("class name", "_tyxjp1")[1].text.strip())
         except:
             scroll_down_height += 20
             driver.execute_script("window.scroll(0, " + str(scroll_down_height) + ");")
+            if (scroll_down_height > driver.execute_script("return document.documentElement.scrollHeight") and scroll_down_height > 1000):
+                return {'Error' : 'Unable to read Airbnb webpage'}
+    try:
+        price = get_numbers(driver.find_elements("class name", "_tyxjp1")[1].text.strip())
+    except:
+        try:
+            price = get_numbers(driver.find_element("class name", "_1y74zjx").text.strip())
+        except:
+            return {'Error' : 'Unable to read Airbnb webpage'}
     info = [x.strip() for x in info]
     num_guests, num_br, num_bed = (get_numbers(x) for x in info[0:3])
     num_bath = int(np.ceil(float(info[3].split()[0])))
@@ -84,21 +94,41 @@ def airbnb():
         address = street_address if add_num == "" else add_num + " " + street_address
         zillow_link = [_ for _ in search(address + " zillow", num_results=1)][0]
         driver.get(zillow_link)
+        elems = []
+        for x in driver.find_elements("class name","Text-c11n-8-89-0__sc-aiai24-0 cfmKEe"):
+            elems.append(x.text)
         rent_est = None
     except:
-        return {'Error' : 'Unable to estimate address'}, 200
+        return {'Error' : 'Unable to estimate address'}
     try:
-        if (driver.find_elements("class name", "Text-c11n-8-89-0__sc-aiai24-0.UtIzR")[3].text == address):
-            rent_est = get_numbers(driver.find_elements("class name","Text-c11n-8-89-0__sc-aiai24-0.cfmKEe")[1].text)
+        zillow_address = driver.find_elements("class name", "Text-c11n-8-89-0__sc-aiai24-0.UtIzR")[3].text
+        try:
+            if (zillow_address == address and get_numbers(driver.find_elements("class name","Text-c11n-8-89-0__sc-aiai24-0.cfmKEe")[1].text).isnumeric()):
+                rent_est = get_numbers(driver.find_elements("class name","Text-c11n-8-89-0__sc-aiai24-0.cfmKEe")[1].text)
+            elif (zillow_address == address and get_numbers(driver.find_elements("class name","Text-c11n-8-89-0__sc-aiai24-0 cfmKEe")[0].text).isnumeric()):
+                rent_est = 0.01 * get_numbers(driver.find_elements("class name","Text-c11n-8-89-0__sc-aiai24-0 cfmKEe")[0].text)
+        except:
+            try:
+                if (zillow_address == address and get_numbers(driver.find_elements("class name","Text-c11n-8-89-0__sc-aiai24-0 cfmKEe")[0].text).isnumeric()):
+                    rent_est = 0.01 * get_numbers(driver.find_elements("class name","Text-c11n-8-89-0__sc-aiai24-0 cfmKEe")[0].text)
+            except:
+                pass
     except:
         try:
             redfin_link = [_ for _ in search(address + " redfin", num_results=1)][0]
             driver.get(redfin_link)
             redfin_address = driver.find_element("class name", "street-address").text + " " + driver.find_element("class name", "dp-subtext.bp-cityStateZip").text
-            if(redfin_address == address):
-                rent_est = get_numbers(driver.find_elements("class name", "price")[1].text)
+            rent_est = get_numbers(driver.find_elements("class name", "price")[1].text)
+            if(redfin_address == address and get_numbers(driver.find_elements("class name", "price")[1].text).isnumeric()):
+                rent_est = get_numbers(driver.find_elements("class name", "price"))[1].text
+            elif(redfin_address == address and get_numbers(driver.find_elements("class name", "statsValue"))[1].text.isnumeric()):
+                rent_est = 0.01 * get_numbers(driver.find_element("class name", "statsValue").text)
         except:
-            pass
+            try:
+                if(redfin_address == address and get_numbers(driver.find_elements("class name", "statsValue"))[1].text.isnumeric()):
+                    rent_est = 0.01 * get_numbers(driver.find_element("class name", "statsValue").text)
+            except:
+                pass
     if (not rent_est or not isinstance(rent_est,int)):
         driver.get("https://app.rentcast.io/app")
         elems = {"Text":[], "Element":[]}
@@ -123,7 +153,7 @@ def airbnb():
         test_addresses.append(street_address)
         test_addresses.append(city + ", " + state + " " + zipcode)
         for test_address in test_addresses:
-            if (rent_est):
+            if rent_est:
                 break
             try:
                 rent_est = get_numbers(driver.find_element("class name", "display-3").get_attribute("textContent"))
@@ -138,11 +168,12 @@ def airbnb():
             try:
                 rent_est = round(state_rent_data.loc[state_rent_data["state"] == address_json["address"]["Region"]].iloc[0,1] * (num_br + num_bath / 3))
             except:
-                return {'Airbnb link' : listing_url, 'Airbnb name' : airbnb_name, 'Airbnb picture' : airbnb_pic, 'approximate address' : address, 'stay price' : price, 'Error' : 'Rent estimate could not calculated: location may not be in the US'}
+                return {'Airbnb link' : listing_url, 'Airbnb info' : bed_and_bath, 'Airbnb name' : airbnb_name, 'Airbnb picture' : airbnb_pic, 'approximate address' : address, 'stay price' : price, 'Error' : 'Rent estimate could not calculated: location may not be in the US'}
             remote_location = True
     utl_avg = 429.33 # from https://www.forbes.com/home-improvement/living/monthly-utility-costs-by-state/
+    revenue = price * .97
     day_rent_est = round(((rent_est + utl_avg) * 12 / 365.25),2)
-    profit_margin = round(100 * (price - day_rent_est) / price,2)
-    premium_perc = round(price/day_rent_est * 100)
-    host_profit = round(price - day_rent_est,2)
-    return {'Airbnb link' : listing_url, 'Airbnb name' : airbnb_name, 'Airbnb picture' : airbnb_pic, 'approximate address' : address, 'stay price' : price, 'daily host cost' : day_rent_est, 'premium percentage' : premium_perc, 'occupied profit margin' : profit_margin, 'occupied daily profit' : host_profit}
+    profit_margin = round(100 * (revenue - day_rent_est) / revenue,2)
+    premium_perc = round(revenue/day_rent_est * 100)
+    host_profit = round(revenue - day_rent_est,2)
+    return {'Airbnb link' : listing_url, 'Airbnb info' : bed_and_bath, 'Airbnb name' : airbnb_name, 'Airbnb picture' : airbnb_pic, 'approximate address' : address, 'stay price' : price, 'daily host cost' : day_rent_est, 'premium percentage' : premium_perc, 'occupied profit margin' : profit_margin, 'occupied daily profit' : host_profit}
