@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for
+from flask import Blueprint, render_template, request
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
@@ -7,7 +7,6 @@ import os
 import pandas as pd
 import numpy as np
 import requests
-import json
 import time
 from googlesearch import search
 import urllib.parse
@@ -79,7 +78,6 @@ def airbnb():
             lng += c
         elif(spec_char_count == 3):
             break
-    price_per_night = "$" + str(price) + " per night"
     bed_and_bath = str(num_br) + (" Bedroom, " if num_br == 1 else (" Bedrooms, " if isinstance(num_br,int) else ", ")) + str(num_bath) + (" Bathroom" if num_bath == 1 else " Bathrooms")
     try:
         loc_url = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&location=" + lng + "," + lat + "&token=" + os.getenv("API_TOKEN")
