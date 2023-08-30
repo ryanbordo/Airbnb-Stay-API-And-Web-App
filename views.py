@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, request
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
-from dotenv import load_dotenv
 import os
 import pandas as pd
 import numpy as np
@@ -12,8 +11,6 @@ from googlesearch import search
 import urllib.parse
 
 views = Blueprint(__name__, "views")
-
-load_dotenv()
 
 def get_numbers(w):
     nums = ""
@@ -80,7 +77,7 @@ def airbnb():
             break
     bed_and_bath = str(num_br) + (" Bedroom, " if num_br == 1 else (" Bedrooms, " if isinstance(num_br,int) else ", ")) + str(num_bath) + (" Bathroom" if num_bath == 1 else " Bathrooms")
     try:
-        loc_url = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&location=" + lng + "," + lat + "&token=" + os.getenv("API_TOKEN")
+        loc_url = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&location=" + lng + "," + lat + "&token=AAPK3a1b443d322b4817bcf976c67026e67aY3eBBi031akgsnQKM7K7YG2EfSTflxsLFa-iuS81KbBhqpVKs8PnIpZiiKTTmuRd"
         response = requests.get(loc_url)
         address_json = response.json()
         add_num = address_json["address"]["AddNum"]
