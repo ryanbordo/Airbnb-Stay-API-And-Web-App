@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 import os
 import pandas as pd
-import numpy as np
+import math
 import requests
 import time
 from googlesearch import search
@@ -67,7 +67,7 @@ def airbnb():
             return {'Error' : 'Unable to read Airbnb webpage'}
     info = [x.strip() for x in info]
     num_guests, num_br, num_bed = (get_numbers(x) for x in info[0:3])
-    num_bath = int(np.ceil(float(info[3].split()[0])))
+    num_bath = int(math.ceil(float(info[3].split()[0])))
     lat, lng, spec_char_count = "", "", 0
     for c in map_link:
         if(c == "@" or c == ","):
@@ -145,7 +145,7 @@ def airbnb():
         test_addresses = []
         if (add_num != ""):
             for i in range(4):
-                x = int(np.ceil((i+1)/2) * pow(-1,i))
+                x = int(math.ceil((i+1)/2) * pow(-1,i))
                 new_add_num = int(add_num) + x
                 test_addresses.append(str(new_add_num) + " " + street_address)
         test_addresses.append(street_address)
